@@ -31,6 +31,11 @@ import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
 import TextTransformation from '@ckeditor/ckeditor5-typing/src/texttransformation';
 import CloudServices from '@ckeditor/ckeditor5-cloud-services/src/cloudservices';
 
+//Add
+import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment';
+import ImageResizeEditing from '@ckeditor/ckeditor5-image/src/imageresize/imageresizeediting'
+import ImageResizeHandles from '@ckeditor/ckeditor5-image/src/imageresize/imageresizehandles';
+
 export default class ClassicEditor extends ClassicEditorBase {}
 
 // Plugins to include in the build.
@@ -58,7 +63,10 @@ ClassicEditor.builtinPlugins = [
 	PasteFromOffice,
 	Table,
 	TableToolbar,
-	TextTransformation
+	TextTransformation,
+	Alignment,
+	ImageResizeEditing,
+	ImageResizeHandles,
 ];
 
 // Editor configuration.
@@ -67,6 +75,7 @@ ClassicEditor.defaultConfig = {
 		items: [
 			'heading',
 			'|',
+			'alignment',
 			'bold',
 			'italic',
 			'link',
@@ -101,6 +110,69 @@ ClassicEditor.defaultConfig = {
 			'mergeTableCells'
 		]
 	},
+	resizeOptions: [
+		{
+			name: 'resizeImage:original',
+			value: null,
+			label: 'Original'
+		},
+		{
+			name: 'resizeImage:40',
+			value: '40',
+			label: '40%'
+		},
+		{
+			name: 'resizeImage:60',
+			value: '60',
+			label: '60%'
+		}
+	],
+	highlight: {
+		options: [
+			{
+				model: 'redPen',
+				class: 'pen-red',
+				title: 'Red pen',
+				color: 'var(--ck-highlight-pen-red)',
+				type: 'pen'
+			},
+			{
+				model: 'greenPen',
+				class: 'pen-green',
+				title: 'Green pen',
+				color: 'var(--ck-highlight-pen-green)',
+				type: 'pen'
+			},
+			{
+				model: 'yellowMarker',
+				class: 'marker-yellow',
+				title: 'Yellow marker',
+				color: 'var(--ck-highlight-marker-yellow)',
+				type: 'marker'
+			},
+			{
+				model: 'greenMarker',
+				class: 'marker-green',
+				title: 'Green marker',
+				color: 'var(--ck-highlight-marker-green)',
+				type: 'marker'
+			},
+			{
+				model: 'pinkMarker',
+				class: 'marker-pink',
+				title: 'Pink marker',
+				color: 'var(--ck-highlight-marker-pink)',
+				type: 'marker'
+			},
+			{
+				model: 'blueMarker',
+				class: 'marker-blue',
+				title: 'Blue marker',
+				color: 'var(--ck-highlight-marker-blue)',
+				type: 'marker'
+			},
+		],
+	},
 	// This value must be kept in sync with the language defined in webpack.config.js.
-	language: 'en'
+	language: 'ko'
 };
